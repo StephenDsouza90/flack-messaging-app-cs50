@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Flack: An Online Messaging Service
+{% endblock %}
+
+{% block content %}
+
+    <h4>Please provide a display name to enter</h4>
+    <form action="/display-name" method="POST">
+        <div class="form-group">
+            <input type="text" placeholder="Display Name" class="form-control" id="username" name="username">
+        </div>
+        <button class="btn btn-primary" type="submit">Enter</button>
+    </form>
+
+{% endblock %}

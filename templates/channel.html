@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ session.current_channel }}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h4 class="alert alert-warning text-center">Chat Room: {{ session.current_channel }} (created by {{ name }})</h4>
+    </div>
+
+    <div class="list-group">
+
+        <textarea id="chat-box" cols="30" rows="15" readonly>
+            {%- for message in messages -%}
+                [{{ message[1] }}]: {{ message[2] }} <{{ message[0] }}> {{ '\n' }}                
+            {%- endfor -%}
+        </textarea>
+    </div>
+
+    <div class="input-group">
+        <input id="user-message" placeholder="Type here" size="120" autocomplete="off" autofocus>
+        <button id="send-button" class="btn btn-primary" type="reset">Send</button>
+    </div>
+        
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Emoji</button>
+        <div class="dropdown-menu">
+            {% for emo in emoji %}
+                {{ emo }}
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="../static/scripts/channels.js"></script>
+
+    <!-- Emoji -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+{% endblock %}
